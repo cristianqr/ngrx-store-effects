@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+  <button>test</button>
+  <div id="video1"></div>
+  <script>
+    var iAmHere = 'W_nxkUZswMA';
+    var react = 'A71aqufiNtQ';
+    function onYouTubeIframeAPIReady(){
+      player = new YT.Player("video1", {
+        videoId: 'eCCan3TFPoc',
+        width: 1000,
+        height: 500,
+        playerVars: {
+          "autoplay": 1,
+          "controls": 1,
+          "showinfo": 0,
+          "modestbranding": 0,
+          "loop": 1,
+          "fs": 0,
+          "cc_load_policy": 0,
+          "iv_load_policy": 3,
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      event.target.unMute();
+      event.target.setVolume(100); //this can be set from 0 to 100
+    }
+
+    function onStateChange(e) {
+      if (e.data === YT.PlayerState.ENDED) {
+        player.playVideo();
+      }
+    }
+  </script>
+</body>
+</html>
